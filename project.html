@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery-migrate-1.2.1.js"></script>  <!-- 向下兼容之前的版本 -->
+	<script type="text/javascript" src="js/jquery.ui.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.form.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.js"></script>
+	<script type="text/javascript" src="uEditor/uEditor.js"></script>
+	<script type="text/javascript" src="js/project.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/smoothness/jquery.ui.css">
+	<link rel="shortcut icon" type="image/x-icon" href="img/ico/know.ico">
+	<link rel="stylesheet" type="text/css" href="uEditor/uEditor.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>UKnow</title>
+</head>
+<body>
+
+	<!-- 顶部图片显示部分 横栏显示用户基本信息 轮播图  透明显示搜索框-->
+	<div id="top_information">
+		<span class="top_information_logo">
+			<img src="img/ico/know.ico" style="width: 38px;height: 38px">
+			<span class="top_information_span" >U Know ?</span>
+		</span>
+		<span class="another_search">
+			<input id="another_search_text" class="another_search_text" type="text" value="请输入问题、话题、或者关注的用户名" >
+			<button class="button_search button">搜索</button>
+			<button class="button_ques button">提问</button>
+			
+		</span>
+		<span class="top_member">
+			<a href="#" id="reg_a" class="reg_a">注册</a>
+			<a href="#" id="user_a" class="user_a">用户</a>
+			|
+			<a href="#" id="login_a" class="login_a">登录</a>
+			<a href="#" id="exit_a" class="exit_a">退出</a>
+		</span>
+
+
+	</div>
+
+	<!-- 轮播器 jquery实现-->
+	<div id="wrapper">
+		<div id="banner" style="position: relative;top: 41px">			
+		
+			<div id="slide_img" style="position: absolute; ">
+				<img src="img/carousel/thumb-gallery-1.jpg">
+				<img src="img/carousel/thumb-gallery-2.jpg">
+				<img src="img/carousel/thumb-gallery-3.jpg">
+				<img src="img/carousel/thumb-gallery-4.jpg">
+				<img src="img/carousel/thumb-gallery-5.jpg">
+				<img src="img/carousel/thumb-gallery-6.jpg">
+				<img src="img/carousel/thumb-gallery-7.jpg">
+				<img src="img/carousel/thumb-gallery-8.jpg">
+				<img src="img/carousel/thumb-gallery-9.jpg"> 
+			</div>
+
+			<div style="position:absolute; top: 100px;left: 40px;">
+				<img id="goleft" src="img/ico/goleft.ico" style="width: 55px;height: 55px;">
+			</div>
+			<div style="position: absolute;top: 100px;right: 40px;">
+				<img id="goright" src="img/ico/goright.ico" style="width: 55px;height: 55px;">
+			</div>
+
+			<!-- 在轮播器中间插入搜索框 -->
+			<div id="top_search" >
+				<input id="top_search_text" class="top_search_text" type="text" value="请输入问题、话题、或者关注的用户名" >
+				<button id="button_search" class="button_search button">搜索</button>
+				<button id="button_ques" class="button_ques button">提问</button>
+			</div>
+		
+		</div>
+	
+	</div>
+
+	<div id="s_contents" style="position: absolute;top:320px">
+		
+	</div>
+
+
+
+	<form id="reg" title="会员注册">
+		<!-- 会员注册的dialog -->
+		<ol class="reg_error">
+
+		</ol>
+		<p>
+			<label for="user">账号: </label>
+			<input type="text" class="user" name="user" id="user" />
+			<span class="star">*</span>
+		</p>
+		<p>
+			<label for="passwd">密码: </label>
+			<input type="password" class="passwd" name="passwd" id="passwd" />
+			<span class="star">*</span>
+		</p>
+		<p>
+			<label for="email">邮箱: </label>
+			<input type="text" class="email" name="email" id="email"  />
+			<span class="star">*</span>
+		</p>
+		<p>
+			<label for="sex">性别: </label>
+			<input class="sex" type="radio" name="sex" id="male" value="男" /><label class="sex_word" for="male">男</label><input class="sex" 
+			type="radio" name="sex" id="female" value="女" /><label class="sex_word" for="female">女</label>
+		</p>
+		<p>
+			<label for="date">生日: </label>
+			<input type="text" class="date" readonly="readonly" name="date" id="date" /> 
+			
+		</p>
+		
+
+
+	</form>
+
+
+	会员登录窗口
+	<form id="login" title="登录窗口">
+		<ol class="login_error">
+			
+		</ol>
+		<p>
+			<label for="login_user">账号: </label>
+			<input type="text" class="login_user" name="login_user" id="login_user" />
+			<span class="star">*</span>
+		</p>
+		<p>
+			<label for="login_passwd">密码: </label>
+			<input type="password" class="login_passwd" name="login_passwd" id="login_passwd" />
+			<span class="star">*</span>
+		</p>
+		<p>
+
+			<input type="checkbox" class="expires" name="expires" id="expires" checked="checked">
+			<label class="expires" for="expires">登录后7天有效</label>
+		</p>
+	</form>
+	
+	<div id="loading">数据交互中...</div>
+
+	
+
+	<div id="question_tips">请登录后操作...</div>
+	
+	<!--提问表单-->
+	<form id="question" title="用户提问">
+		<p>
+			<label for="title_q">提问简述: </label>
+			<input type="text" class="title_q" name="title_q" id="title_q">
+		</p>
+
+		<p>
+			<textarea id="content_ques" name="content_ques" class="content_ques">请输入问题描述！</textarea>
+		</p>
+
+	</form>
+	
+
+	
+	
+	
+</body>
+</html>

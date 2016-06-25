@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="s_contents">
+		<div class='info'></div>
+		<h3></h3>
+		<div class='s_editor'></div>
+		<div class="bottom">
+			<span class="comment" data-id=" '+ json[i].id +' "  data-user="'+ json[i].user +' ">'+ json[i].count +'条评论</span>
+			<span class="focusques" style="position:relative;">
+				<img src="./img/ico/plus_white.ico" style="position:absolute;">
+				<span style="margin-left:18px">关注问题</span>
+		    </span>
+			<span class="share">
+				<img src="./img/ico/heart_black.ico" style="position:absolute;">
+				<span style="margin-left:18px">感谢</span>
+			</span>
+			<span class="collection">
+				<img src="./img/ico/collect_in.ico" style="position:absolute;">
+			收藏</span>
+			<span class="up">收起</span>
+			
+			<div class="comment_list">
+				<dl class="comment_load">
+					<dd>正在加载评论</dd>
+				<dl>
+
+				<dl class="comment_more">
+					<dd>
+						<span class="load_more">加载更多评论</span>
+					</dd>
+				</dl>
+
+				<dl class="comment_contents">
+					<dd class="comment_user">' + $.cookie('login_user')+ '</dd>
+					<dd class="comment_text">' + $('.comment_list').eq(index).find('textarea').val() + '</dd>
+					<dd class="comment_time">' + date.getFullYear() + '-' + (date.getMonth()+ 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + '</dd>
+
+				</dl>
+
+				<form>
+					<dl class="add_comment">
+						<dd>
+							<textarea class="add_text" name="comment"></textarea>
+						</dd>
+						<dd>
+							<input type="hidden" name="user" value="'+$.cookie('login_user')+'">
+							<input type="hidden" name="titleid" value="' + $(comment_this).attr('data-id') + '">
+							<input type="button" value="发表" class="add_comment_button">
+						</dd>
+					</dl>
+				</form>');
+
+
+
+
+			</div>
+		</div>
+		<hr>
+	</div>
+</body>
+</html>
